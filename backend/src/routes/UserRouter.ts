@@ -1,22 +1,22 @@
 import {Router, Request, Response} from 'express';
-import { UserModel } from '../models/UserModel';
-import { UserController } from '../controllers/UserController';
+import { PersonModel } from '../models/PersonModel';
+import { PersonController } from '../controllers/PersonController';
 
-export class UserRouter {
+export class PersonRouter {
     public static create(router: Router) {
-        const model = new UserModel();
-        const controller = new UserController(model);
+        const model = new PersonModel();
+        const controller = new PersonController(model);
         router.post('/user', async (req: Request, res: Response) => {
-            await controller.createUser(req, res);
+            await controller.create(req, res);
         });
         router.get('/user/:id', async (req: Request, res: Response) => {
-            await controller.getUserById(req, res);
+            await controller.getPersonById(req, res);
         });
         router.get('/user', async (req: Request, res: Response) => { 
-            await controller.getAllUsers(req, res);
+            await controller.getPeople(req, res);
         });
         router.delete('/user/:id', async (req: Request, res: Response) => {
-            await controller.deleteUser(req, res);
+            await controller.deletePerson(req, res);
         } );
     }
 };

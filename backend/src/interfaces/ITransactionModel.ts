@@ -7,8 +7,8 @@ export interface ITransactionModel {
 
 export interface Transaction {
     id: number;
-    user_id: number;
+    person_id: number;
     description: string;
     amount: number;
-    type: string;
+    type: "receita" | "despesa";
 };

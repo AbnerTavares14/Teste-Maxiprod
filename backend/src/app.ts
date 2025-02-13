@@ -2,7 +2,9 @@ import express, {Express, json, Router} from 'express';
 import 'express-async-errors';
 import cors from 'cors';
 import { seed } from './config/db';
-import {UserRouter} from './routes/UserRouter';
+import {PersonRouter} from './routes/UserRouter';
+import {TransactionRouter} from './routes/TransactionRouter';
+import {ConsultationRouter} from './routes/ConsultationRouter';
 import { errorHandler } from './middlewares/ErrorHandler';
 
 class App {
@@ -32,7 +34,9 @@ class App {
         router.get('/', (req, res) => {
             res.send('Works well');
         });
-        UserRouter.create(router);
+        PersonRouter.create(router);
+        TransactionRouter.create(router);
+        ConsultationRouter.create(router);
         this.express.use('/', router);
     }
 
