@@ -9,8 +9,8 @@ export class TransactionController implements ITransactionController {
         this.transactionModel = transactionModel;
     }
     async create(req: Request, res: Response): Promise<Response | void> {
-        await this.transactionModel.create(req.body);
-        res.sendStatus(201);
+        const user = await this.transactionModel.create(req.body);
+        res.status(201).send(user);
     }
     async getTransactionById(req: Request, res: Response): Promise<Response | void> {
         const {id} = req.params;

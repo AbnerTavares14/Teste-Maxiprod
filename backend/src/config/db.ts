@@ -16,6 +16,7 @@ export async function openDB() {
 // Função que cria as tabelas no banco de dados, caso não tenham sido criadas
 export async function seed() { 
     const db = await openDB();
+    await db.run('PRAGMA foreign_keys = ON');
     await db.run(`CREATE TABLE IF NOT EXISTS PEOPLE(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name VARCHAR(255) UNIQUE NOT NULL, 

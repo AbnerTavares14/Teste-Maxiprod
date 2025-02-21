@@ -11,8 +11,8 @@ export class PersonController implements IPersonController {
 
     
     async create(req: Request, res: Response): Promise<Response | void> {
-        await this.personModel.create(req.body);
-        res.sendStatus(201);
+        const person = await this.personModel.create(req.body);
+        res.send(person).status(201);
     }
 
     async getPersonById(req: Request, res: Response): Promise<Response | void> {
